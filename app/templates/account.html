@@ -2,5 +2,18 @@
 {% block title %}Account{% endblock %}
 {% block content %}
 <h2>Account</h2>
-<p>Update your account information here.</p>
+<form method="POST" action="{{ url_for('main.account') }}">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.username.label(class="form-control-label") }}
+        {{ form.username(class="form-control form-control-lg") }}
+    </div>
+    <div class="form-group">
+        {{ form.email.label(class="form-control-label") }}
+        {{ form.email(class="form-control form-control-lg") }}
+    </div>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
 {% endblock %}

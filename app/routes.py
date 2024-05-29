@@ -3,6 +3,23 @@ from .forms import RegistrationForm, LoginForm
 from .models import User
 from . import db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
+from .forms import UpdateAccountForm
+
+@bp.route('/account', methods=['GET', 'POST'])
+@login_required
+def account():
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been updated!', 'success')
+        return redirect(url_for('main.account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+    return render_template('account.html', title='Account', form=form)
+
 
 bp = Blueprint('main', __name__)
 
