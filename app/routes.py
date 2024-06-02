@@ -5,6 +5,9 @@ from . import db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 from .forms import UpdateAccountForm
 
+bp = Blueprint('main', __name__)
+
+
 @bp.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
