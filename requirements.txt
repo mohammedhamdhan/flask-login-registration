@@ -6,3 +6,4 @@ Flask-Login
 email-validator
 gunicorn
 psycopg2-binary
+
