@@ -4,3 +4,5 @@ Flask-Migrate
 Flask-Bcrypt
 Flask-Login
 email-validator
+gunicorn
+psycopg2-binary
